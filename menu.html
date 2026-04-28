@@ -1,0 +1,60 @@
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color: #11540c;">
+  <div class="container">
+    
+    <a class="navbar-brand d-flex align-items-center" routerLink="/">
+      <img src="assets/img/LOGO BOCASION_FINAL.jpeg" class="logo me-2">
+      Campus Café Bocasión
+    </a>
+
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav ms-auto align-items-center">
+        <li class="nav-item"><a class="nav-link" routerLink="/">Inicio</a></li>
+        <li class="nav-item"><a class="nav-link active" routerLink="/menu">Menú</a></li>
+        <li class="nav-item"><a class="nav-link" routerLink="/contacto">Contacto</a></li>
+        <li class="nav-item"><a class="nav-link" routerLink="/equipo">Equipo</a></li>
+        <li class="nav-item">
+          <a class="btn btn-outline-light btn-sm ms-2" routerLink="/login">Iniciar sesión</a>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+<!-- MENÚ -->
+<div class="container py-5 mt-5">
+
+  <h2 class="text-center fw-bold mb-4">☕ Menú de la Cafetería</h2>
+
+  <!-- FILTRO -->
+  <div class="text-center mb-4">
+    <label class="fw-semibold me-2">Filtrar:</label>
+    <select class="form-select w-auto d-inline-block" (change)="filtrar($event)">
+      <option value="todos">Todos</option>
+      <option value="saludable">Saludable 🥗</option>
+      <option value="normal">Normal 🍔</option>
+    </select>
+  </div>
+
+  <!-- PRODUCTOS -->
+  <div class="row g-4">
+    <div class="col-md-4" *ngFor="let prod of productosFiltrados">
+      <div class="card h-100 shadow-sm">
+        <img [src]="prod.img" class="card-img-top">
+
+        <div class="card-body text-center">
+          <h5 class="card-title">{{ prod.nombre }}</h5>
+          <button class="btn btn-success fw-semibold"
+                  (click)="verDetalle(prod.tipo)">
+            Ver detalle
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- FOOTER -->
+<footer class="footer">
+  © 2026 Campus Café Bocasión | Proyecto académico
+</footer>
