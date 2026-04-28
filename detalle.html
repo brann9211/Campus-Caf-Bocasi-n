@@ -1,0 +1,63 @@
+<!-- NAVBAR -->
+<header class="header">
+  <h5>Campus Café Bocasión ☕</h5>
+
+  <nav>
+    <a routerLink="/" routerLinkActive="active">Inicio</a>
+    <a routerLink="/menu" routerLinkActive="active">Menú</a>
+    <a routerLink="/carrito" routerLinkActive="active">
+      🛍️ Carrito ({{ cartCount || 0 }})
+    </a>
+  </nav>
+</header>
+
+<!-- CONTENIDO -->
+<div class="container" *ngIf="producto">
+
+  <h3 class="text-center fw-bold mb-3">
+    {{ producto.nombre }}
+  </h3>
+
+  <label>Selecciona una opción:</label>
+  <select class="form-select mb-3"
+          [(ngModel)]="opcionSeleccionada"
+          (change)="calcularTotal()">
+
+    <option *ngFor="let opc of (producto.opciones | keyvalue)"
+            [value]="opc.key">
+      {{ opc.key }} - S/ {{ opc.value }}
+    </option>
+  </select>
+
+  <!-- EXTRA -->
+  <div *ngIf="producto.extra">
+    <label>{{ producto.extra.label }}:</label>
+
+    <select class="form-select mb-3"
+            [(ngModel)]="extraSeleccionado"
+            (change)="calcularTotal()">
+
+      <option *ngFor="let ex of (producto.extra.opciones | keyvalue)"
+              [value]="ex.value">
+        {{ ex.key }}
+      </option>
+
+    </select>
+  </div>
+
+  <div class="price">
+    Importe: S/ {{ total.toFixed(2) }}
+  </div>
+
+  <button (click)="agregarCarrito()">
+    Agregar al carrito
+  </button>
+  <div *ngIf="mensaje" class="alert alert-success mt-3 text-center">
+  {{ mensaje }}
+</div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  © 2026 Campus Café Bocasión | Proyecto académico
+</footer>
