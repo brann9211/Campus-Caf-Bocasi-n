@@ -1,0 +1,45 @@
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color: #11540c;">
+  <div class="container">
+    
+    <!-- LOGO -->
+    <a class="navbar-brand fw-bold d-flex align-items-center" routerLink="/">
+      <img src="assets/img/LOGO BOCASION_FINAL.jpeg" class="logo me-2">
+      Campus Café Bocasión 
+    </a>
+
+    <!-- BOTÓN MOBILE -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- MENÚ -->
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto align-items-center">
+        <li class="nav-item"><a class="nav-link active" routerLink="/">Inicio</a></li>
+        <li class="nav-item"><a class="nav-link" routerLink="/menu">Menú</a></li>
+        <li class="nav-item"><a class="nav-link" routerLink="/contacto">Contacto</a></li>
+        <li class="nav-item"><a class="nav-link" routerLink="/equipo">Equipo</a></li>
+        <li class="nav-item">
+          <a class="btn btn-outline-light btn-sm px-3 fw-semibold ms-2" routerLink="/login">
+            Iniciar sesión
+          </a>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container text-center text-white">
+    <h1 class="fw-bold mb-3">Bienvenido a Cafetería Bocasión</h1>
+    <p class="fs-5">Tu cafetería universitaria favorita, ahora también en versión digital ☕</p>
+    <a routerLink="/menu" class="btn btn-light mt-3 px-4 fw-semibold">Ver Menú</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-dark text-light text-center py-3">
+  <p class="mb-0">© 2025 Campus Café UPC | Proyecto académico</p>
+</footer>
