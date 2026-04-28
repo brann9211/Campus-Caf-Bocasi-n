@@ -1,0 +1,67 @@
+<header class="bg-success text-white p-3 d-flex justify-content-between">
+  <h5>Campus Café UPC ☕</h5>
+
+  <nav>
+    <a routerLink="/" class="text-white me-3">Inicio</a>
+    <a routerLink="/menu" class="text-white me-3">Menú</a>
+    <a routerLink="/carrito" class="text-white">🛍️ Carrito</a>
+  </nav>
+</header>
+
+<div class="container mt-4">
+
+  <h3 class="text-center mb-4">💳 Métodos de pago</h3>
+
+  <div class="card p-4 shadow-sm">
+
+    <!-- METODO PAGO -->
+    <label>Selecciona método de pago:</label>
+    <select class="form-select mb-3"
+            [(ngModel)]="metodoPago">
+
+      <option value="">-- Seleccionar --</option>
+      <option value="tarjeta">Tarjeta</option>
+      <option value="yape">Yape</option>
+      <option value="plin">Plin</option>
+    </select>
+
+    <!-- TARJETA -->
+    <div *ngIf="metodoPago === 'tarjeta'">
+
+      <input class="form-control mb-2"
+             placeholder="Nombre del titular"
+             [(ngModel)]="nombreTarjeta">
+
+      <input class="form-control mb-2"
+             placeholder="Número de tarjeta"
+             [(ngModel)]="numeroTarjeta">
+
+      <input class="form-control mb-2"
+             placeholder="Fecha de caducidad (MM/AA)"
+             [(ngModel)]="fechaCaducidad">
+
+      <input class="form-control mb-2"
+             placeholder="CCV"
+             [(ngModel)]="ccv">
+    </div>
+
+    <!-- YAPE / PLIN -->
+    <div *ngIf="metodoPago === 'yape' || metodoPago === 'plin'">
+
+      <input class="form-control mb-2"
+             placeholder="Número de celular"
+             [(ngModel)]="celular">
+
+      <input class="form-control mb-2"
+             placeholder="Código de confirmación"
+             [(ngModel)]="codigo">
+    </div>
+
+    <!-- BOTÓN -->
+    <button class="btn btn-success w-100 mt-3"
+            (click)="confirmarCompra()">
+      Confirmar compra
+    </button>
+
+  </div>
+</div>
