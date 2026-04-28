@@ -1,1 +1,67 @@
+<!-- HEADER -->
+<header class="bg-success text-white p-3 d-flex justify-content-between align-items-center">
+  <h5>Campus Café UPC ☕</h5>
 
+  <nav>
+    <a routerLink="/" class="text-white me-3">Inicio</a>
+    <a routerLink="/menu" class="text-white me-3">Menú</a>
+    <a routerLink="/carrito" class="text-white">
+      🛍️ Carrito ({{ carrito.length || 0 }})
+    </a>
+  </nav>
+</header>
+
+<div class="container mt-4">
+
+  <h3 class="text-center mb-4">🛒 Tu carrito</h3>
+
+  <!-- VACÍO -->
+  <div *ngIf="carrito.length === 0" class="text-center">
+    Tu carrito está vacío 🛍️
+  </div>
+
+  <!-- TABLA -->
+  <table *ngIf="carrito.length > 0" class="table table-bordered text-center">
+
+    <thead class="table-success">
+      <tr>
+        <th>Producto</th>
+        <th>Opción</th>
+        <th>Extra</th>
+        <th>Precio (S/)</th>
+        <th>Acción</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let item of carrito; let i = index">
+        <td>{{ item.nombre }}</td>
+        <td>{{ item.opcion }}</td>
+        <td>{{ item.extra }}</td>
+        <td>{{ item.precio.toFixed(2) }}</td>
+
+        <!-- 🔥 BOTÓN ELIMINAR -->
+        <td>
+          <button class="btn btn-danger btn-sm"
+                  (click)="eliminarProducto(i)">
+            ❌
+          </button>
+        </td>
+      </tr>
+    </tbody>
+
+  </table>
+
+  <!-- TOTAL -->
+  <h5 class="text-end mt-3" *ngIf="carrito.length > 0">
+    Total a pagar: S/ {{ total.toFixed(2) }}
+  </h5>
+
+  <!-- BOTÓN -->
+  <div class="text-end mt-4" *ngIf="carrito.length > 0">
+    <button class="btn btn-success" routerLink="/pago">
+      Ir al pago
+    </button>
+  </div>
+
+</div>
