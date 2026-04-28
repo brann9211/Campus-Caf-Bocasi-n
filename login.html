@@ -1,0 +1,102 @@
+<div class="login-container">
+
+  <!-- LOGO -->
+  <img src="assets/img/LOGO BOCASION_FINAL.jpeg" alt="Logo Campus Bocasión">
+
+  <!-- TÍTULO -->
+  <h2>
+    {{ esLogin ? 'Iniciar Sesión' : 'Registrarse' }}
+  </h2>
+
+  <!-- LOGIN -->
+  <form *ngIf="esLogin" (ngSubmit)="login()">
+
+    <label>Usuario</label>
+    <input type="text"
+           class="form-control mb-2"
+           placeholder="Correo o teléfono"
+           [(ngModel)]="usuario"
+           name="usuario"
+           required>
+
+    <label>Contraseña</label>
+    <input type="password"
+           class="form-control mb-3"
+           placeholder="Ingrese su contraseña"
+           [(ngModel)]="clave"
+           name="clave"
+           required>
+
+    <button class="btn btn-login w-100">
+      Ingresar
+    </button>
+  </form>
+
+  <!-- REGISTRO -->
+  <form *ngIf="!esLogin" (ngSubmit)="registrar()">
+
+    <label>Nombre</label>
+    <input class="form-control mb-2"
+           [(ngModel)]="nombre"
+           name="nombre"
+           required>
+
+    <label>Apellido</label>
+    <input class="form-control mb-2"
+           [(ngModel)]="apellido"
+           name="apellido"
+           required>
+
+    <label>Correo</label>
+    <input type="email"
+           class="form-control mb-2"
+           [(ngModel)]="correo"
+           name="correo"
+           required>
+
+    <label>Teléfono</label>
+    <input class="form-control mb-2"
+           [(ngModel)]="telefono"
+           name="telefono"
+           required>
+
+    <label>Contraseña</label>
+    <input type="password"
+           class="form-control mb-3"
+           [(ngModel)]="nuevaClave"
+           name="nuevaClave"
+           required>
+
+    <button class="btn btn-login w-100">
+      Registrarse
+    </button>
+  </form>
+
+  <!-- MENSAJES -->
+  <div *ngIf="successMsg" class="alert alert-success mt-3">
+    ✅ Bienvenido, inicio de sesión exitoso
+  </div>
+
+  <div *ngIf="errorMsg" class="alert alert-danger mt-3">
+    ❌ Usuario o contraseña incorrectos
+  </div>
+
+  <div *ngIf="registerMsg" class="alert alert-info mt-3">
+    ✅ Registro exitoso
+  </div>
+
+  <!-- TOGGLE -->
+  <p class="text-center mt-3">
+    {{ esLogin ? '¿No tienes cuenta?' : '¿Ya tienes cuenta?' }}
+
+    <span class="toggle-link" (click)="toggleForm()">
+      {{ esLogin ? 'Regístrate aquí' : 'Inicia sesión aquí' }}
+    </span>
+  </p>
+
+  <!-- VOLVER -->
+  <a routerLink="/" class="back-btn">
+    ⬅ Volver al inicio
+  </a>
+
+</div>
