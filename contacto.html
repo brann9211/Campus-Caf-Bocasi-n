@@ -1,0 +1,103 @@
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-success " >
+  <div class="container">
+
+    <a class="navbar-brand fw-bold d-flex align-items-center" routerLink="/">
+      <img src="assets/img/LOGO BOCASION_FINAL.jpeg"class="logo me-2">
+      Campus Café Bocasión
+    </a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="nav">
+      <ul class="navbar-nav ms-auto">
+
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/">Inicio</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/menu">Menú</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link active" routerLink="/contacto">Contacto</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/equipo">Equipo</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="btn btn-outline-light btn-sm ms-2" routerLink="/login">
+            Iniciar sesión
+          </a>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- FORMULARIO -->
+<div class="container mt-5 pt-5">
+
+  <h2 class="text-center fw-bold mb-4">Contáctanos</h2>
+  <p class="text-center text-muted mb-4">
+    Déjanos tus datos y nos comunicaremos contigo.
+  </p>
+
+  <form (ngSubmit)="enviar()" #f="ngForm" class="mx-auto form-box">
+
+    <div class="mb-3">
+      <label class="form-label">Nombre completo</label>
+      <input type="text"
+             class="form-control"
+             [(ngModel)]="nombre"
+             name="nombre"
+             required>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Correo electrónico</label>
+      <input type="email"
+             class="form-control"
+             [(ngModel)]="email"
+             name="email"
+             required>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Mensaje</label>
+      <textarea class="form-control"
+                rows="3"
+                [(ngModel)]="mensaje"
+                name="mensaje"
+                required></textarea>
+    </div>
+
+    <button type="submit"
+            class="btn btn-success w-100"
+            [disabled]="!f.valid">
+      Enviar
+    </button>
+
+  </form>
+
+  <!-- VOLVER -->
+  <div class="text-center mt-4">
+    <a routerLink="/" class="btn btn-outline-dark">
+      ⬅ Volver al inicio
+    </a>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer class="bg-dark text-light text-center py-3 mt-5">
+  <p class="mb-0">
+    © 2026 Campus Café Bocasión | Proyecto académico de Ingeniería de Sistemas
+  </p>
+</footer>
